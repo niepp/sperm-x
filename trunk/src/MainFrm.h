@@ -17,7 +17,7 @@
 #include "MorphaDataRetriveDlg.h"
 #include "CombinationAnalyseDlg.h"
 
-#import   "craxdrt.dll"   no_namespace
+#import   "../lib/craxdrt.dll"   no_namespace
 
 class CMainFrame : public CFrameWnd
 {
