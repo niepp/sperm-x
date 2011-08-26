@@ -599,7 +599,14 @@ void CSpermView::FileOpenMorphaImage()
 	{	
 		m_bAnalyseFinished = false; // 0314
 		AfxGetMainWnd()->SetWindowText(CString("精子检测系统_")+OpenDlg.GetFileName()); // 0314
-		m_imgMorphaImg.Load(OpenDlg.GetFileName());
+		bool bLoad = m_imgMorphaImg.Load(OpenDlg.GetPathName());
+		if(bLoad == false)
+		{
+			CString strMsg;
+			strMsg.Format("Load Morpah Image %s Error",OpenDlg.GetPathName());
+			MessageBox(strMsg,"ERROR",MB_ICONERROR);
+			return ;
+		}
 		CDC *pDC = GetDC();
 		m_imgMorphaImg.Show(pDC->m_hDC,0,0,m_imgMorphaImg.Width(),m_imgMorphaImg.Height());
 		ReleaseDC(pDC);
