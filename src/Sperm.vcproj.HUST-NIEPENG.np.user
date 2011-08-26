@@ -34,7 +34,7 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release|Win32"
+			Name="release|Win32"
 			>
 			<DebugSettings
 				Command="$(TargetPath)"
