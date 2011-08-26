@@ -202,9 +202,9 @@ void ImageSeg(IplImage* srcImage,IplImage* dstImage,vector<REGION>& rgn)
 			dstImage->imageData[pt.y*dstImage->widthStep+pt.x]=0;
 		}
 	}
-
-	vector<REGION>::iterator it;
-	for(it=rgn.begin()+1;it!=rgn.end();) 
+	assert(rgn.size() > 0);
+	vector<REGION>::iterator it = rgn.begin();
+	for(++it;it!=rgn.end();) 
 		if(find(it->region.begin(),it->region.end(),it->centerpoint) == it->region.end())
 		{
 			for(i=0;i<it->region.size();++i)
@@ -214,7 +214,7 @@ void ImageSeg(IplImage* srcImage,IplImage* dstImage,vector<REGION>& rgn)
 			}
 			it->region.clear();
 			it->contour.clear();
-			rgn.erase(it );
+			it = rgn.erase(it);
 		}
 		else
 			++it;
