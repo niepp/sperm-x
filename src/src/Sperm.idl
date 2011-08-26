@@ -1,0 +1,19 @@
+
+	// Sperm.idl : IDL source for Sperm.exe
+//
+// This file will be processed by the MIDL tool to
+// produce the type library (Sperm.tlb) and marshalling code.
+import "oaidl.idl";
+import "ocidl.idl";
+[
+	uuid(0D5863A9-0562-4180-90EE-53EA46AF732E),
+	version(1.0),
+	helpstring("Sperm 1.0 Type Library")
+]
+library SpermLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+};
+
+	
