@@ -49,9 +49,9 @@ using namespace std;
 
 #pragma comment(lib,"Winmm.lib")
 #pragma comment(lib,"gdi32.lib")
-#pragma comment(lib,"cv.lib")
-#pragma comment(lib,"highgui.lib")
-#pragma comment(lib,"cxcore.lib")
+#pragma comment(lib,"../lib/cv.lib")
+#pragma comment(lib,"../lib/highgui.lib")
+#pragma comment(lib,"../lib/cxcore.lib")
 
 #import "../lib/msado15.dll"  no_namespace rename("EOF","EndOfFile")
 #import "../lib/craxdrt.dll"  no_namespace 
