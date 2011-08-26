@@ -112,9 +112,9 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="..\bin\Release"
-			IntermediateDirectory="..\bin\IntR"
+			Name="release|Win32"
+			OutputDirectory="..\bin\release"
+			IntermediateDirectory="..\bin\intr"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="2"
@@ -135,36 +135,40 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
+				PreprocessorDefinitions="_DEBUG"
 				MkTypLibCompatible="true"
 				SuppressStartupBanner="true"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Release/Sperm.tlb"
+				TypeLibraryName=".\Debug/Sperm.tlb"
 				HeaderFileName=""
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/I../include"
 				Optimization="2"
 				InlineFunctionExpansion="1"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="true"
+				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="stdafx.h"
 				PrecompiledHeaderFile="$(IntDir)/Sperm.pch"
-				AssemblerListingLocation="$(IntDir)"
-				ObjectFile="$(IntDir)"
-				ProgramDataBaseFileName="$(IntDir)"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\"
+				BrowseInformation="0"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
+				PreprocessorDefinitions="_DEBUG"
 				Culture="2052"
 			/>
 			<Tool
@@ -172,6 +176,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies=" Winmm.lib"
 				OutputFile="$(OutDir)/Sperm.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
@@ -214,18 +219,58 @@
 			<File
 				RelativePath=".\ActiveListCtrl.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ActiveResultPropPage.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\AllDataStructure.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\AllFunction.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="BrowerDlg.cpp"
@@ -250,10 +295,31 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\CaptureVideo.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="CDXGraph.cpp"
@@ -276,6 +342,17 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -302,42 +379,143 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\column.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\columns.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\CombinationAnalyseDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\crystalreportviewer10.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\CSampleGrabberCB_np.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\dataformatdisp.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\datagrid.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\DataListCtrl.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\DIB.CPP"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="DISDLG.cpp"
@@ -362,66 +540,227 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\DrawStatic.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\DShowUtilities.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\FluoreListCtrl.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\FluoreResultPropPage.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\font.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\GloablFun.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\IGvfSnake.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ImageConvert.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ImageProcess.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LiveDataRetriveDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LiveDetectDLG.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LiveDetectedPamaSettingDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LiveImagePage.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LivenessResultPage.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LivePropertySheet.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="LogInDlg.cpp"
@@ -446,10 +785,31 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\LoginThread.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="MainFrm.cpp"
@@ -474,90 +834,311 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MophyListCtrl.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MophyResultPropPage.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaDataGather.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaDataRetriveDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaDetectDLG.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaDrawStatic.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaEdgeDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaPadDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaParameterDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\MorphaResDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\OptionDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\PageEdit.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\PatientInfo.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\PatientInfoQueryDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\picture.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\PrinteDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\RegesterDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\RegisterThread.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\selbookmarks.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\SinSpmReco.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\SnakeType.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="Sperm.cpp"
@@ -580,6 +1161,17 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -610,14 +1202,45 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\SpermMorphaSet.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\SpermParamCalc.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="SpermView.cpp"
@@ -640,6 +1263,17 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -666,14 +1300,45 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\split.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\splits.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="StdAfx.cpp"
@@ -700,22 +1365,74 @@
 						UsePrecompiledHeader="1"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						UsePrecompiledHeader="1"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\stddataformatsdisp.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\SysReg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\UserManageDlg.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\VideoPlay.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="View2.cpp"
@@ -738,6 +1455,17 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
 					/>
 				</FileConfiguration>
 			</File>
@@ -764,10 +1492,31 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions=""
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\Wraper.cpp"
 				>
+				<FileConfiguration
+					Name="shipping|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						BasicRuntimeChecks="0"
+						BrowseInformation="0"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
