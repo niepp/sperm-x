@@ -323,7 +323,7 @@ double IGvfSnake::CalculateAverageDist(const vector<skPoint>&vSnake)
 {
 	double d, h = 0.0;
     int i, n = vSnake.size();
-	for(i=1; i<=n; i++) {
+	for(i=1; i<n; i++) {
 		d = (vSnake[i]-vSnake[i-1]).GetModule();
 		h += d;
 	}

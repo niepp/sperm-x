@@ -294,9 +294,9 @@ UINT CMorphaDetectDLG::ThreadHandle_AutoAnalyse(LPVOID lpParam)
 	pDlg->FormResultImage();
 	
 	DWORD dw=0;
-	CPoint pt=(CPoint)pDlg->m_vSpermRegion[0].SpermCenterPos - theView1->GetScrollPosition();
+	CPoint pt=(CPoint)pDlg->m_vSpermRegion[0].SpermCenterPos - CPoint(0,0);//theView1->GetScrollPosition();
 	CPoint pt1=(CPoint)pDlg->m_vSpermRegion[0].SpermCenterPos;
-	CPoint pt2=theView1->GetScrollPosition();
+	CPoint pt2 = CPoint(0,0);//theView1->GetScrollPosition();
 	dw |= pt.y;
 	dw |= (pt.x<<16);
 	theView1->SendMessage(WM_LBUTTONDOWN,0,(LPARAM)dw);
@@ -359,7 +359,7 @@ void CMorphaDetectDLG::AutoSeg()
 			m_lpBMMorphaData[(m_iplTempImg->height-1-i)*lw + j*3 + 2] = gray;
 		}
 
-	SetDlgItemText(IDC_ANALYSEPROGRESS,"正在搜索精子，请稍候...");
+//	SetDlgItemText(IDC_ANALYSEPROGRESS,"正在搜索精子，请稍候...");
 	vector<REGION> vSpermResult;
 	::ImageSeg(srcImage, dstImage, vSpermResult);
 
@@ -394,7 +394,6 @@ void CMorphaDetectDLG::AutoSeg()
 		}	
 		m_vSpermRegion.push_back(sr);
 	}
-	
     cvReleaseImage(&srcImage);
     cvReleaseImage(&dstImage);
 }
