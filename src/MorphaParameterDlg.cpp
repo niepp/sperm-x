@@ -142,7 +142,7 @@ void CMorphaParameterDlg::OnSelchangeCombox()
 void CMorphaParameterDlg::ReadAndSetParameterData(CString fileName)
 {
     CString sPath( theStrPathApp );
-	sPath+= "\\data\\";
+	sPath+= "\\config\\";
 	CreateDirectory((LPCTSTR)sPath, NULL);
 
 	CString  filePathAndName; 
@@ -439,7 +439,7 @@ void CMorphaParameterDlg::OnOK()
 	}
 
     CString sPath(theStrPathApp);
-	sPath+= "\\data\\";
+	sPath+= "\\config\\";
 	CreateDirectory((LPCTSTR)sPath, NULL);
 
 	CString  filePathAndName; 

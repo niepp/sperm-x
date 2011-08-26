@@ -179,7 +179,7 @@ BOOL CMorphaDetectDLG::OnInitDialog()
 	MoveWindow(cxCur+10,rect8.bottom,rect.right-rect.left,rect.bottom-rect.top);
 
     CString sPath(theStrPathApp), fileName = "UserDefined_Parameter_Data.txt";
-	sPath+= "\\data\\";
+	sPath+= "\\config\\";
 	CreateDirectory((LPCTSTR)sPath, NULL);
 
 	CString  filePathAndName; 

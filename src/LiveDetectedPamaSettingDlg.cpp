@@ -87,7 +87,7 @@ void CLiveDetectedPamaSettingDlg::ReadInitParamDataFromFile()
 {
 	CString fileName = "LiveDetected_Parameter_Data.txt";
     CString sPath(theStrPathApp);
-	sPath+= "\\data\\";
+	sPath+= "\\config\\";
 	CreateDirectory((LPCTSTR)sPath, NULL);
 	
 	CString  filePathAndName; 
@@ -116,7 +116,7 @@ void CLiveDetectedPamaSettingDlg::WriteParamDataToFile()
 {
 	CString fileName = "LiveDetected_Parameter_Data.txt";
     CString sPath(theStrPathApp);
-	sPath+= "\\data\\";
+	sPath+= "\\config\\";
 	CreateDirectory((LPCTSTR)sPath, NULL);
 
 	CString  filePathAndName; 
