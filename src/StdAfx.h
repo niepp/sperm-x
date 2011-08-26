@@ -53,8 +53,8 @@ using namespace std;
 #pragma comment(lib,"highgui.lib")
 #pragma comment(lib,"cxcore.lib")
 
-#import "msado15.dll"  no_namespace rename("EOF","EndOfFile")
-#import "craxdrt.dll"  no_namespace 
+#import "../lib/msado15.dll"  no_namespace rename("EOF","EndOfFile")
+#import "../lib/craxdrt.dll"  no_namespace 
 
 #define CheckPointer(p,ret) {if((p)==NULL) return (ret);}
 
