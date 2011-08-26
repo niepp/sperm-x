@@ -1389,7 +1389,7 @@ void CMorphaDetectDLG::OnButtonMorphadetectFinish()
  
 	CString strInsMorResRatio;
 	if( m_MhNum.AbnormalSpermNum+m_MhNum.NormalSpermNum != 0 )
-	strInsMorResRatio.Format("insert morpharesultratio values('%s',%lf,%lf,%lf,%lf,%lf,\
+	strInsMorResRatio.Format("insert into morpharesultratio values('%s',%lf,%lf,%lf,%lf,%lf,\
 		%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf)",theView3->m_strDetectNO,
 		m_MhNum.normal_lengthNum*1.0/(m_MhNum.AbnormalSpermNum+m_MhNum.NormalSpermNum),
 		m_MhNum.normal_widthNum*1.0/(m_MhNum.AbnormalSpermNum+m_MhNum.NormalSpermNum),
@@ -1407,13 +1407,13 @@ void CMorphaDetectDLG::OnButtonMorphadetectFinish()
 		m_MhNum.normal_rugaNum*1.0/(m_MhNum.AbnormalSpermNum+m_MhNum.NormalSpermNum)
 		);
 	else
-		strInsMorResRatio.Format("insert morpharesultratio values('%s',0.0,0.0,0.0,0.0,0.0,\
+		strInsMorResRatio.Format("insert into morpharesultratio values('%s',0.0,0.0,0.0,0.0,0.0,\
 		0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)", strDetectNO);
 
 	GetSpermPartialAbnormalNum();
 
 	CString strSQLRes;
-	strSQLRes.Format("insert MorphaPartialRes values('%s', %d, %d, %d, %d, %d, %lf, %lf, %lf, %lf, %lf, %lf)" , \
+	strSQLRes.Format("insert into MorphaPartialRes values('%s', %d, %d, %d, %d, %d, %lf, %lf, %lf, %lf, %lf, %lf)" , \
 		strDetectNO,
 		m_PtAmRes.nTotalNum,
 		m_PtAmRes.nTotalNormalNum,
@@ -1478,7 +1478,7 @@ void CMorphaDetectDLG::OnButtonMorphadetectFinish()
 				pDlg->Create(IDD_DIALOG_MORPHA_RETRIVE);
 			pDlg->ShowWindow(SW_HIDE);
 
-			CString strSQLinfo("select distinct * from basicinfo,spermchait\
+			CString strSQLinfo("select distinct *,basicinfo.pdetectno as 'pdetectno' from basicinfo,spermchait \
 								where basicinfo.pdetectno=spermchait.pdetectno and \
 								basicinfo.pdetectno='");
 			strSQLinfo = strSQLinfo + theView3->m_strDetectNO + CString("'");

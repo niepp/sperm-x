@@ -52,7 +52,7 @@ BOOL CMorphaResDlg::OnInitDialog()
 	CMainFrame* pMainFrm=(CMainFrame*)AfxGetMainWnd();
 	CMorphaDataRetriveDlg& dlg = *(pMainFrm->m_pWndMorphadlg);
 	
-	CString strSQLCRMfi("create table morphafordisplay as select morpharesult.* \
+	CString strSQLCRMfi("select morpharesult.* into morphafordisplay \
 	    from morpharesult,basicinfo,morphaimage,spermchait,morpharesultratio \
 		where morpharesult.pdetectno = basicinfo.pdetectno \
 		  and morpharesult.pdetectno = morphaimage.pdetectno \
@@ -61,8 +61,11 @@ BOOL CMorphaResDlg::OnInitDialog()
 
 	try
 	{
-		if(!IsTableExist(theConnection, "morphafordisplay"))
-			theConnection->Execute((LPCTSTR)strSQLCRMfi,NULL,adCmdText);
+		if(IsTableExist(theConnection, "morphafordisplay") == true)
+		{
+			theConnection->Execute((LPCTSTR)"drop table morphafordisplay",NULL,adCmdText);
+		}
+		theConnection->Execute((LPCTSTR)strSQLCRMfi,NULL,adCmdText);
 
 		CString strGetN("select count(*) from morphafordisplay");
 		_RecordsetPtr rs=theConnection->Execute((LPCSTR)strGetN,NULL,adCmdText);
@@ -119,9 +122,13 @@ void CMorphaResDlg::GetRecordSet(_RecordsetPtr &rs, int row1, int row2)
 		tablename = "morphaforinquery";
 	else
 		tablename = "morphafordisplay";
-	strSQL.Format("select  * from (select top %d * from %s) a\
-		where pdetectno not in(select top %d pdetectno from %s)"
-		,row2,tablename,row1,tablename);
+	if(row1 == 0 )
+		strSQL.Format("select  * from (select top %d * from %s) a "
+			,row2,tablename);
+	else
+		strSQL.Format("select  * from (select top %d * from %s) a \
+			where pdetectno not in(select top %d pdetectno from %s)"
+			,row2,tablename,row1,tablename);
 	if(rs == NULL)
 		rs.CreateInstance("adodb.recordset");
 	rs = theConnection->Execute((LPCSTR)strSQL,NULL,adCmdText);
