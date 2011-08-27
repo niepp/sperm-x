@@ -390,9 +390,9 @@ void SinSpmReco::EdgeTrack(unsigned char objectpiexl, unsigned char bkpiexl, CvP
 			nxtp.x = p.x + dir[k][0];
 			nxtp.y = p.y + dir[k][1];
 			if(nxtp==seed) end = true;
-			if(!fArr[nxtp.x*Width+nxtp.y]
+			if(IsEdgePt(objectpiexl, bkpiexl, nxtp.x, nxtp.y, Img)
+				&& !fArr[nxtp.x*Width+nxtp.y]
 				&& CV_IMAGE_ELEM(Img, uchar, nxtp.x, nxtp.y) == (uchar)objectpiexl
-				&& IsEdgePt(objectpiexl, bkpiexl, nxtp.x, nxtp.y, Img)
 				)
 			{
 				vp.push(nxtp);
