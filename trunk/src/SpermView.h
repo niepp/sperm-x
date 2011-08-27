@@ -159,7 +159,6 @@ public:
 		void markTheNewSperm(const POINT& pt, COLORTYPE ct);
 		CPoint mClick_pt;
 		// } 2009_3_31
-		afx_msg void OnDataOptionNew();
 };
 
 #ifndef _DEBUG  // debug version in SpermView.cpp

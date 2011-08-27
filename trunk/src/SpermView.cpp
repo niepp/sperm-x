@@ -87,7 +87,6 @@ BEGIN_MESSAGE_MAP(CSpermView, CScrollView)
 	ON_COMMAND(ID_FILE_PRINT, CScrollView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, CScrollView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, CScrollView::OnFilePrintPreview)
-	ON_COMMAND(ID_DATA_OPTION_NEW, &CSpermView::OnDataOptionNew)
 END_MESSAGE_MAP()
 
 CSpermView::CSpermView()
@@ -1635,9 +1634,3 @@ void CSpermView::OnTimer(UINT nIDEvent)
 	CScrollView::OnTimer(nIDEvent);
 }
 
-void CSpermView::OnDataOptionNew()
-{
-	// TODO: 在此添加命令处理程序代码
-		COptionDlg dlg;
-	dlg.DoModal();
-}

@@ -404,5 +404,6 @@ void CMainFrame::OnReg()
 void CMainFrame::OnUpdateDataOptionS(CCmdUI* pCmdUI) 
 {
 	// TODO: Add your command update UI handler code here
+	m_bMenuItemDataOption = true;
 	pCmdUI->Enable(m_bMenuItemDataOption);
 }
