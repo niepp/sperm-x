@@ -119,7 +119,6 @@ BEGIN
         MENUITEM "数据源选项",                       ID_DATA_OPTION_S
         MENUITEM "文件打开(&O)...\tCtrl+O",         ID_FILE_OPEN_S
         MENUITEM "退出(&X)",                      ID_APP_EXIT
-        MENUITEM "数据源选项new",                    ID_DATA_OPTION_NEW
     END
     POPUP "数据维护(&M)"
     BEGIN
