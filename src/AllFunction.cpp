@@ -842,10 +842,13 @@ void RegionGrowFromBG(IplImage* srcImage,vector<REGION>& rgn,int startvalue,int 
 		delta[index++]=d;
 		if(index<=step)
 		{
+			assert(index>=1&&index<=256);
 			sumDelta+=delta[index-1];
 		}
-		else
+		else if(step != 0)
 		{
+			assert(index>=1&&index<=256);
+			assert(index-step>=1&&index-step<=256);
 			int avg=sumDelta/step;
 			if(delta[index-1]>avg)
 				break;

@@ -177,7 +177,7 @@ void CMorphaDataRetriveDlg::OnButtonInquery()
     //  如果处于查询状态，则生成 morphaforinquery 表
 	if(IsInqueryState())
 	{
-			CString strSQLinfo("create table morphaforinquery as select morphafordisplay.*  from  \
+			CString strSQLinfo("select morphafordisplay.* into morphaforinquery from  \
 					morphafordisplay,basicinfo,spermchait \
 					where morphafordisplay.pdetectno = basicinfo.pdetectno\
 					and   morphafordisplay.pdetectno = spermchait.pdetectno ");
