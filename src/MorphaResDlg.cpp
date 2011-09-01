@@ -152,7 +152,7 @@ void CMorphaResDlg::OnClickListMorphadata(NMHDR* pNMHDR, LRESULT* pResult)
 	}
 	CString str=m_wndMorphaDataList.GetItemText(pNMListView->iItem,nCol);
 	if(str == "") return;
-	CString strSQLinfo("select distinct * from basicinfo,spermchait\
+	CString strSQLinfo("select distinct *,basicinfo.pdetectno as 'pDetectno' from basicinfo,spermchait\
 		where basicinfo.pdetectno=spermchait.pdetectno and \
 		basicinfo.pdetectno='");
 	strSQLinfo= strSQLinfo + str + CString("'");
