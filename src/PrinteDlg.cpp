@@ -149,10 +149,11 @@ BOOL CPrinteDlg::OnInitDialog()
 		postdata1.bstrVal = bstr1;
 		postdata2.bstrVal = bstr2;
 				
-		hr = m_Report->Database->Tables->Item[1]->SetLogOnInfo(m_parm.ipadd.GetBuffer(255),
-															m_parm.database.GetBuffer(255),
+		hr = m_Report->Database->Tables->Item[1]->SetLogOnInfo("",
+															"",
 															m_parm.username.GetBuffer(255),
 															m_parm.passwd.GetBuffer(255));
+
 		if(FAILED(hr))
 		{
 			::AfxMessageBox("´íÎó");

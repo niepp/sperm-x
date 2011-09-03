@@ -421,9 +421,9 @@ void CCombinationAnalyseDlg::OnBtnCombinAnalyse()
 		CString strdetect(m_strEditInputPatientNO);
 		crxparm parm;
 		parm.ipadd = TEXT( GetConnectIP() );
-		parm.database = TEXT("sperm");
-		parm.username = TEXT("sa");
-		parm.passwd = TEXT("sa");
+		parm.database = TEXT("data");
+		parm.username = TEXT("");
+		parm.passwd = TEXT("");
 		
 		CPrinteDlg cpld(reportype,parm,strdetect);
 		cpld.DoModal();
@@ -610,9 +610,9 @@ void CCombinationAnalyseDlg::OnBtnRptPrint()
 	CString strdetect(m_strEditInputPatientNO);
 	crxparm parm;
 	parm.ipadd = TEXT( GetConnectIP() );
-	parm.database = TEXT("sperm");
-	parm.username = TEXT("sa");
-	parm.passwd = TEXT("sa");
+	parm.database = TEXT("data");
+	parm.username = TEXT("");
+	parm.passwd = TEXT("");
 	
 	CPrinteDlg cpld(reportype,parm,strdetect);
 	cpld.DoModal();	
