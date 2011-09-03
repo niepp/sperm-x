@@ -1005,7 +1005,7 @@ void CLiveDetectDLG::SpermMoveTrack()
 
 			#ifdef _MAKE_PREDICT	
 
-				if( i>=1 && preIndexI[j] >= 0 && 
+				if( i>=1 && preIndexI[j] >= 0 && preIndexI[j] < m_vSpermTrack[i-1].size() &&
 					m_vSpermTrack[i-1][ preIndexI[j] ].nPred <= MAX_PRED )
 				{ // Ô¤²â
 					st.nPred = m_vSpermTrack[i-1][ preIndexI[j] ].nPred + 1;
