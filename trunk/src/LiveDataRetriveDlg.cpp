@@ -595,9 +595,9 @@ void CLiveDataRetriveDlg::OnBtnPrint()
 	CString strdetect(m_strEditDetectNO);
 	crxparm parm;
 	parm.ipadd = TEXT( GetConnectIP() );
-	parm.database = TEXT("sperm");
-	parm.username = TEXT("sa");
-	parm.passwd = TEXT("sa");
+	parm.database = TEXT("data");
+	parm.username = TEXT("");
+	parm.passwd = TEXT("");
 	CPrinteDlg cpld(reportype,parm,strdetect);
 	cpld.DoModal();
 }
@@ -966,9 +966,9 @@ void CLiveDataRetriveDlg::OnComparePrint(CString wParam, CString lParam)
 	int reportype = 3; // 0 综合报告 1 形态学报告 2 活力分析报告 3 对比分析报告
 	crxparm parm;
 	parm.ipadd = TEXT( GetConnectIP() );
-	parm.database = TEXT("sperm");
-	parm.username = TEXT("sa");
-	parm.passwd = TEXT("sa");
+	parm.database = TEXT("data");
+	parm.username = TEXT("");
+	parm.passwd = TEXT("");
 	CPrinteDlg cpld(reportype, parm, wParam, lParam);
 	cpld.DoModal();	
 	

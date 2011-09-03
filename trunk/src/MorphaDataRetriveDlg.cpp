@@ -578,9 +578,9 @@ void CMorphaDataRetriveDlg::OnBtnPrintsimple()
 	CString strdetect(m_strEditDetectNO);
 	crxparm parm;
 	parm.ipadd = TEXT( GetConnectIP() );
-	parm.database = TEXT("sperm");
-	parm.username = TEXT("sa");
-	parm.passwd = TEXT("sa");
+	parm.database = TEXT("data");
+	parm.username = TEXT("");
+	parm.passwd = TEXT("");
 
 	CPrinteDlg cpld(reportype,parm,strdetect);
 	cpld.DoModal();	
@@ -592,9 +592,9 @@ void CMorphaDataRetriveDlg::OnBtnPrintmultihead()
 	CString strdetect(m_strEditDetectNO);
 	crxparm parm;
 	parm.ipadd = TEXT( GetConnectIP() );
-	parm.database = TEXT("sperm");
-	parm.username = TEXT("sa");
-	parm.passwd = TEXT("sa");
+	parm.database = TEXT("data");
+	parm.username = TEXT("");
+	parm.passwd = TEXT("");
 
 	CPrinteDlg cpld(reportype,parm,strdetect);
 	cpld.DoModal();	
