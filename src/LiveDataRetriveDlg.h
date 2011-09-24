@@ -15,7 +15,7 @@
 #include "LiveImagePage.h"
 #include "PageEdit.h"
 #include "resource.h"
-
+#include "./print/LivePrintFrame.h"
 class CLiveDataRetriveDlg : public CDialog
 {
 // Construction
@@ -150,6 +150,8 @@ public:
 	void delByKey(const CString&);
 	
 	void ClearItem();
+public:
+	CLivePrintFrame* m_pLivePrintFrame;
 
 };
 

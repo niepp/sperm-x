@@ -123,12 +123,16 @@ void CMorphaResDlg::GetRecordSet(_RecordsetPtr &rs, int row1, int row2)
 	else
 		tablename = "morphafordisplay";
 	if(row1 == 0 )
+	{
 		strSQL.Format("select  * from (select top %d * from %s) a "
 			,row2,tablename);
+	}
 	else
+	{
 		strSQL.Format("select  * from (select top %d * from %s) a \
 			where pdetectno not in(select top %d pdetectno from %s)"
 			,row2,tablename,row1,tablename);
+	}
 	if(rs == NULL)
 		rs.CreateInstance("adodb.recordset");
 	rs = theConnection->Execute((LPCSTR)strSQL,NULL,adCmdText);

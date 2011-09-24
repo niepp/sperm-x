@@ -750,6 +750,14 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\print\LivePrintFrame.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\print\LivePrintView.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\LivePropertySheet.cpp"
 				>
 				<FileConfiguration
@@ -1646,6 +1654,14 @@
 			</File>
 			<File
 				RelativePath=".\LivenessResultPage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\print\LivePrintFrame.h"
+				>
+			</File>
+			<File
+				RelativePath=".\print\LivePrintView.h"
 				>
 			</File>
 			<File
