@@ -78,17 +78,25 @@ BOOL CLivenessResultPage::OnInitDialog()
 	//CString strSQLGetLiveResCol("select distinct name  from syscolumns  where id=object_id('livenessresult')");
 	//CString strSQLGetmovityCol("select distinct name  from syscolumns  where id=object_id('spermmovitypara')");
 	//CString strSQLGetnumstaticCol("select distinct name  from syscolumns  where id=object_id('spermnumstatics')");
-	CString strSQLLiveForDisplay("create table livefordisplay as select ");
+	CString strSQLLiveForDisplay("select *,"
+		"livenessresult.pdetectno as pdetectno , "
+		"spermnumstatics.pactivespermnum as pactivespermnum , "
+		"spermnumstatics.pFrontSpermNum as pFrontSpermNum , "
+		"spermnumstatics.pStraightSpermNum as spermnumstatics , "
+		"spermnumstatics.pActiveSpermRatio as pActiveSpermRatio , "
+		"spermnumstatics.pActiveSpermDensity as pActiveSpermDensity , "
+		"spermnumstatics.pCurveSpermNum as pCurveSpermNum "
+		"into livefordisplay  ");
+	try
+	{
+		if(strCol.IsEmpty())
+		{		
 
-	if(strCol.IsEmpty())
-	{		
-		try
-		{
 			std::set<CString>column_names;
 			std::set<CString>live_column_names;
 			std::set<CString>movity_column_names;
 			std::set<CString>numstatic_column_names;
-			
+
 			GetTableColumnNames(theConnection, column_names, "livenessresult");
 			GetTableColumnNames(theConnection, column_names, "spermmovitypara");
 			GetTableColumnNames(theConnection, column_names, "spermnumstatics");
@@ -118,65 +126,68 @@ BOOL CLivenessResultPage::OnInitDialog()
 					strSQLLiveForDisplay+=CString("spermmovitypara.")+(char*)(_bstr_t)vt+e;
 
 			}
-			
-			strSQLLiveForDisplay+="from livenessresult,spermmovitypara,spermnumstatics,  \
-										 basicinfo,spermchait,image_table \
-				where livenessresult.pdetectno = spermmovitypara.pdetectno and \
-					  livenessresult.pdetectno = spermnumstatics.pdetectno and \
-					  livenessresult.pdetectno = basicinfo.pdetectno and \
-					  livenessresult.pdetectno = spermchait.pdetectno and \
-					  livenessresult.pdetectno = image_table.pdetectno ";
 
-			if(!IsTableExist(theConnection,"livefordisplay"))
- 				theConnection->Execute((LPCSTR)strSQLLiveForDisplay,NULL,adCmdText);
+			strSQLLiveForDisplay+="from livenessresult,spermmovitypara,spermnumstatics,  \
+								  basicinfo,spermchait,image_table \
+								  where livenessresult.pdetectno = spermmovitypara.pdetectno and \
+								  livenessresult.pdetectno = spermnumstatics.pdetectno and \
+								  livenessresult.pdetectno = basicinfo.pdetectno and \
+								  livenessresult.pdetectno = spermchait.pdetectno and \
+								  livenessresult.pdetectno = image_table.pdetectno ";
+
+			if(IsTableExist(theConnection,"livefordisplay") == true)
+			{
+				theConnection->Execute("drop table livefordisplay",NULL,adCmdText);
+			}
+			theConnection->Execute((LPCSTR)strSQLLiveForDisplay,NULL,adCmdText);
+
+			strCol = strSQLLiveForDisplay ;
 		}
-		catch (_com_error& e)
+		strSQLLiveForDisplay = strCol;
+		CString str("select count(*) from livefordisplay");
+		_RecordsetPtr rs=theConnection->Execute((LPCSTR)str,NULL,adCmdText);
+
+		dlg.m_dp[0].nTotalRecord=rs->GetCollect((long)0).iVal;
+		dlg.m_dp[0].nPageRecord = NUMPERPAGE;
+		dlg.m_dp[0].nTotalPage = dlg.m_dp[0].nTotalRecord / dlg.m_dp[0].nPageRecord +
+			(dlg.m_dp[0].nTotalRecord % dlg.m_dp[0].nPageRecord!=0);
+
+		CString queryinfo;
+		queryinfo.Format("共查询到%d条记录",dlg.m_dp[0].nTotalRecord);
+		dlg.SetDlgItemText(IDC_STATIC_QUERY,queryinfo);
+		if(dlg.m_dp[0].nTotalRecord == 0)
 		{
-			MessageBox(e.Description());
+			CMainFrame* pMainFrm=(CMainFrame*)AfxGetMainWnd();
+			pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_FIRSTPAGE)->EnableWindow(FALSE);
+			pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_PREPAGE)->EnableWindow(FALSE);
+			pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_NEXTPAGE)->EnableWindow(FALSE);
+			pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_LASTPAGE)->EnableWindow(FALSE);
+			pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_PAGENUM)->EnableWindow(FALSE);
 			return FALSE;
 		}
-		strCol = strSQLLiveForDisplay ;
-	}
-	strSQLLiveForDisplay = strCol;
-	CString str("select count(*) from livefordisplay");
-	_RecordsetPtr rs=theConnection->Execute((LPCSTR)str,NULL,adCmdText);
-	
-	dlg.m_dp[0].nTotalRecord=rs->GetCollect((long)0).iVal;
-	dlg.m_dp[0].nPageRecord = NUMPERPAGE;
-	dlg.m_dp[0].nTotalPage = dlg.m_dp[0].nTotalRecord / dlg.m_dp[0].nPageRecord +
-		                 (dlg.m_dp[0].nTotalRecord % dlg.m_dp[0].nPageRecord!=0);
 
-	CString queryinfo;
-	queryinfo.Format("共查询到%d条记录",dlg.m_dp[0].nTotalRecord);
-	dlg.SetDlgItemText(IDC_STATIC_QUERY,queryinfo);
-	if(dlg.m_dp[0].nTotalRecord == 0)
+		int lowRow, upRow;
+		dlg.GetPageBound(1,lowRow,upRow,dlg.m_dp[0]);
+
+		GetRecordSet(rs,lowRow,upRow);
+		int n=m_wndLiveList.SetData(rs);
+
+
+		queryinfo.Format("第 %d / %d 页",dlg.m_dp[0].nCurPage,dlg.m_dp[0].nTotalPage);
+		dlg.SetDlgItemText(IDC_PAGENUM,queryinfo);
+
+		dlg.GetDlgItem(IDC_BTN_FIRSTPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != 1);
+		dlg.GetDlgItem(IDC_BTN_PREPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != 1);
+		dlg.GetDlgItem(IDC_BTN_NEXTPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != dlg.m_dp[dlg.IsInqueryState()].nTotalPage);
+		dlg.GetDlgItem(IDC_BTN_LASTPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != dlg.m_dp[dlg.IsInqueryState()].nTotalPage );
+	}
+	catch (_com_error& e)
 	{
-		CMainFrame* pMainFrm=(CMainFrame*)AfxGetMainWnd();
-		pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_FIRSTPAGE)->EnableWindow(FALSE);
-		pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_PREPAGE)->EnableWindow(FALSE);
-		pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_NEXTPAGE)->EnableWindow(FALSE);
-		pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_BTN_LASTPAGE)->EnableWindow(FALSE);
-		pMainFrm->m_pWndLivedlg->GetDlgItem(IDC_PAGENUM)->EnableWindow(FALSE);
+		MessageBox(e.Description());
 		return FALSE;
 	}
-
-	int lowRow, upRow;
-	dlg.GetPageBound(1,lowRow,upRow,dlg.m_dp[0]);
-
-	GetRecordSet(rs,lowRow,upRow);
-	int n=m_wndLiveList.SetData(rs);
-	
-
-	queryinfo.Format("第 %d / %d 页",dlg.m_dp[0].nCurPage,dlg.m_dp[0].nTotalPage);
-	dlg.SetDlgItemText(IDC_PAGENUM,queryinfo);
-	
-	dlg.GetDlgItem(IDC_BTN_FIRSTPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != 1);
-	dlg.GetDlgItem(IDC_BTN_PREPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != 1);
-	dlg.GetDlgItem(IDC_BTN_NEXTPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != dlg.m_dp[dlg.IsInqueryState()].nTotalPage);
-	dlg.GetDlgItem(IDC_BTN_LASTPAGE)->EnableWindow(dlg.m_dp[dlg.IsInqueryState()].nCurPage != dlg.m_dp[dlg.IsInqueryState()].nTotalPage );
-
 	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void CLivenessResultPage::OnClickListdata(NMHDR* pNMHDR, LRESULT* pResult) 
@@ -199,9 +210,10 @@ void CLivenessResultPage::OnClickListdata(NMHDR* pNMHDR, LRESULT* pResult)
 	CString str=m_wndLiveList.GetItemText(pNMListView->iItem,nCol);
 	if(str == "" ) return;
 
-	CString strSQLinfo("select distinct * from basicinfo,spermchait\
-		where basicinfo.pdetectno=spermchait.pdetectno and \
-		basicinfo.pdetectno='");
+	CString strSQLinfo("select distinct *,basicinfo.pdetectno as pdetectno "
+		"from basicinfo,spermchait "
+		"where basicinfo.pdetectno=spermchait.pdetectno and "
+		"basicinfo.pdetectno='");
 	strSQLinfo= strSQLinfo + str + CString("'");
 	
 	CLiveDataRetriveDlg& dlg= *(((CMainFrame*) AfxGetMainWnd())->m_pWndLivedlg);
@@ -300,6 +312,17 @@ void CLivenessResultPage::GetRecordSet(_RecordsetPtr &rs, int row1, int row2)
 	strSQL.Format("select * from (select top %d * from %s) a\
 		where pdetectno not in(select top %d pdetectno from %s)"
 		, row2, tablename, row1, tablename);
+	if(row1 == 0 )
+	{
+		strSQL.Format("select  * from (select top %d * from %s) a "
+			,row2,tablename);
+	}
+	else
+	{
+		strSQL.Format("select  * from (select top %d * from %s) a \
+			where pdetectno not in(select top %d pdetectno from %s)"
+			,row2,tablename,row1,tablename);
+	}
 	if(rs == NULL)
 		rs.CreateInstance("adodb.recordset");
 	rs = theConnection->Execute((LPCSTR)strSQL, NULL, adCmdText);

@@ -68,6 +68,8 @@ CLiveDataRetriveDlg::CLiveDataRetriveDlg(CWnd* pParent /*=NULL*/)
 	m_ModifyStatus = WANTMODIFY;
 	
 	m_bBtnPreparePrint = false;
+
+	m_pLivePrintFrame = NULL;
 	
 }
 
@@ -579,7 +581,7 @@ void CLiveDataRetriveDlg::OnChkOther()
 
 void CLiveDataRetriveDlg::OnBtnPrint()
 {
-	int reportype = 3;
+/*	int reportype = 3;
 	switch(m_pttype)
 	{
 	case 0:
@@ -600,6 +602,12 @@ void CLiveDataRetriveDlg::OnBtnPrint()
 	parm.passwd = TEXT("");
 	CPrinteDlg cpld(reportype,parm,strdetect);
 	cpld.DoModal();
+*/
+
+	m_pLivePrintFrame = new CLivePrintFrame;
+	m_pLivePrintFrame->Create(NULL,TEXT("活力报表打印"));
+	m_pLivePrintFrame->OnFilePrintPreview();
+	m_pLivePrintFrame->ShowWindow(SW_SHOWMAXIMIZED);
 }
 
 void CLiveDataRetriveDlg::SaveModify()

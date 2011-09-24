@@ -1491,6 +1491,7 @@ void CMorphaDetectDLG::OnButtonMorphadetectFinish()
 		else {
 			// do nothing.
 		}	
+
 		// 清空View3的显示结果
 		theView3->m_strDetectNO	 = _T("");
 		theView3->m_strPatientName = _T("");
