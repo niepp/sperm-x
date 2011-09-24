@@ -130,8 +130,14 @@ void CDrawStatic::OnMouseMove(UINT nFlags, CPoint point)
 
 	int hScrollPos, vScrollPos;
 
-	CMorphaEdgeDlg *pdlg = (CMorphaEdgeDlg*)GetParent();
-	CPropertySheet* pSheet=(CPropertySheet*)(pdlg->GetParent());
+	CMorphaEdgeDlg *pdlg = dynamic_cast<CMorphaEdgeDlg*>(GetParent());
+	
+	if (pdlg == NULL)
+	{
+		return;
+	}
+
+	CPropertySheet* pSheet= dynamic_cast<CPropertySheet*>(pdlg->GetParent());
 	CStatic* pStatic=(CStatic*)pSheet->GetParent();
 	CMorphaDataRetriveDlg* pDlg=(CMorphaDataRetriveDlg*)pStatic->GetParent();
 
